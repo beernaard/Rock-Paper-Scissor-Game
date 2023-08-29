@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+</head>
+<body>
+    <div id="main-container">
+        <div id="titlecontainer">
+            <h1>Rock, Paper, Scissor Game</h1>
+        </div>
+        <div id="gamecontainer">
+            <div id="bot-container" class="sub-main-container">
+                <div id="computer">
+                    <h4>Computer</h4>
+                </div>
+                <div id="computer-input">
+                    <div id="r-p-s-computer">
+                        <img id="computer-image-input" src="./images\scissor.png" alt="">
+                    </div>
+                </div>
+                <div id="computer-decision-message">
+                    <p id="computer-choice"></p>
+                </div>
+            </div>
+            <div id="msg-score-reset-container" class="sub-main-container">           
+                <div id="score">
+                    <div class="computer-score">
+                        <p id="computer-score-counter">0</p>
+                    </div>
+                    <p></p>
+                    <div class="player-score">
+                        <p id="player-score-counter">0</p>
+                    </div>
+                </div>
+                <div id="result">
+                    <h3 id="result-message"></h3>
+                </div>
+                <div class="reset">
+                    <button onclick="resetAll()"><h4>Reset</h4></button>
+                </div>
+            </div>
+            <div id="player-container" class="sub-main-container">
+                <div id="Player">
+                    <h4>Player</h4>
+                </div>
+                <div id="player-input">
+                    <div id="r-p-s">
+                        <button class="input-rock" onclick="playerInputRock()"><img src="./images\rock.png" alt="rock"></button>
+                        <button class="input-paper" onclick="playerInputPaper()"><img src="./images\paper.png" alt="paper"></button>
+                        <button class="input-scissor" onclick="playerInputScissor()"><img src="./images\scissor.png" alt="scissor"></button>
+                    </div>
+                </div>
+                <div id="player-decision-message">
+                    <p id="player-choice"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         let computerScore=0;
+            let playerScore=0;
+            
+        function resetAll(){
+            computerScore=0;
+            playerScore=0;
+            document.getElementById("computer-choice").innerHTML="";
+            document.getElementById("player-choice").innerHTML="";
+            document.getElementById("result-message").innerHTML="";
+            document.getElementById("player-score-counter").innerHTML="0";
+            document.getElementById("computer-score-counter").innerHTML="0";
+
+        }
+        function playerInputRock(){
+            const playerRock='rock';
+            const computerInput=gettingComputerInput();
+            const result=rockPaperScissor(playerRock,computerInput);
+            gameResult(playerRock,computerInput,result);
+            scoreCounter(result);
+            showingComputerInput(computerInput);
+        }
+        function playerInputPaper(){
+            const playerRock='paper';
+            const computerInput=gettingComputerInput();      
+            const result=rockPaperScissor(playerRock,computerInput);
+            gameResult(playerRock,computerInput,result);
+            scoreCounter(result);
+            showingComputerInput(computerInput);
+        }
+        function playerInputScissor(){
+            const playerRock='scissor';
+            const computerInput=gettingComputerInput();
+            const result=rockPaperScissor(playerRock,computerInput);
+            gameResult(playerRock,computerInput,result);
+            scoreCounter(result);
+            showingComputerInput(computerInput);
+        }
+
+
+        function rockPaperScissor(playerInput,computerInput){
+            let result='';
+            let winner=''; //'computer' or 'player' or 'draw'
+            if(playerInput==='rock'){
+                if(computerInput === 'rock'){
+                result='It is a tie';
+                winner='draw';
+                }
+                else if (computerInput === 'paper'){
+                    result ='You lose';
+                }
+                else if (computerInput === 'scissor'){
+                    result ='You win';
+                }
+            }
+            if(playerInput==='paper'){
+                if(computerInput === 'rock'){
+                result='You win';
+                }
+                else if (computerInput === 'paper'){
+                    result ='It is a tie';
+                }
+                else if (computerInput === 'scissor'){
+                    result ='You lose';
+                }
+            }
+            
+            if(playerInput==='scissor'){
+                if(computerInput === 'rock'){
+                result='You lose';
+                }
+                else if (computerInput === 'paper'){
+                    result ='You win';
+                }
+                else if (computerInput === 'scissor'){
+                    result ='It is a tie';
+                }
+            }
+           
+            return result;
+        }
+        function gettingComputerInput(){
+            const randomNumber = Math.floor(Math.random()*3);
+            let computerMove='';          
+            if(randomNumber === 0){
+                computerMove='rock';
+            }
+            else if (randomNumber === 1){
+                computerMove='paper';
+            }
+            else if (randomNumber === 2){
+                computerMove='scissor';
+            }
+                return computerMove;
+        }
+        function gameResult(userMove,computerMove, result){
+            document.getElementById("computer-choice").innerHTML="The Computer picked "+computerMove;
+            document.getElementById("player-choice").innerHTML="You picked "+userMove;
+            document.getElementById("result-message").innerHTML=result;
+            // alert('You Picked '+userMove+ ' and the computer pick '+computerMove+' , '+result);
+        }
+
+        function showingComputerInput(computerInput){
+            if(computerInput==='rock'){
+                const imgComputer=document.getElementById("computer-image-input");
+                imgComputer.setAttribute("src", "./images/rock.png");
+                console.log(computerInput);
+                console.log(imgComputer);
+            }
+            else if(computerInput==='paper'){
+                const imgComputer=document.getElementById("computer-image-input");
+                imgComputer.setAttribute("src", "./images/paper.png");
+                console.log(computerInput);  
+                console.log(imgComputer);
+            }
+            else if(computerInput==='scissor'){
+                const imgComputer=document.getElementById("computer-image-input");
+                imgComputer.setAttribute("src", "./images/scissor.png");
+                console.log(computerInput);  
+                console.log(imgComputer); 
+            }
+        }
+        function scoreCounter(winner){
+            const playerLose=document.getElementById("result-message");
+            if(winner==='You win'){
+                playerScore++;
+                playerLose.style.color=" #a8dadc"
+                document.getElementById("player-score-counter").innerHTML=playerScore;
+            }
+            else if(winner==='You lose'){
+                computerScore++;
+                playerLose.style.color="#e63946"
+                document.getElementById("computer-score-counter").innerHTML=computerScore;
+            }
+            else if(winner==='It is a tie'){
+                playerLose.style.color="#457b9d";
+                document.getElementById("computer-score-counter").innerHTML=computerScore;
+                document.getElementById("player-score-counter").innerHTML=playerScore;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+colors{
+    #1d3557
+    #457b9d
+    #a8dadc
+    #f1faee
+    #e63946
+}
+
+font{
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+}
