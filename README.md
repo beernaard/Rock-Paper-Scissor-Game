@@ -6,6 +6,9 @@
 ### ui
 ![rps](https://github.com/beernaard/Rock-Paper-Scissor-Game/assets/142719026/2b68e233-825b-4808-9675-dc1678b5d387)
 
+### ui mobile
+![rpsmobile](https://github.com/beernaard/Rock-Paper-Scissor-Game/assets/142719026/69d7938a-4c07-4f59-8398-be186099c1bc)
+
 ### sample win
 ![rpswin](https://github.com/beernaard/Rock-Paper-Scissor-Game/assets/142719026/4f8dc151-d33e-4ccc-95e0-36ea0db98c61)
 
